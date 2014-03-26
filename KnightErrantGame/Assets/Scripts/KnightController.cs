@@ -25,7 +25,7 @@ public class KnightController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator>();
-		target = transform;
+		//target = transform;
 
 	}
 
@@ -36,10 +36,14 @@ public class KnightController : MonoBehaviour {
 						transform.position = Vector2.MoveTowards(transform.position, target.position, step);
 					if(target.position.x < transform.position.x){
 						print ("Should be facing left");
-						animator.SetInteger("Direction", 0);
+						animator.SetInteger("Direction", 2);
 					} else if(target.position.x > transform.position.x){
 						print("Should be facing right");
 						animator.SetInteger("Direction", 1);
+					}
+
+					if (target.position.x == transform.position.x) {
+						animator.SetInteger("Direction", 0);
 					}
 				}
 		}
