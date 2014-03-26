@@ -14,39 +14,35 @@ public class KnightController : MonoBehaviour {
 
 	public Transform target;
 
-		float speed = 2.0f;
+	float speed = 2.0f;
 	bool move;
 		//Vector3 wantedPosition;
+
+	private Animator animator;
 
 	//float speed = 5.0f; 
 
 	// Use this for initialization
 	void Start () {
-
+		animator = this.GetComponent<Animator>();
+		target = transform;
 
 	}
-	
-
-
 
 		void Update(){
 				if (GameManager.myDestination != null) {
 						target = GameManager.myDestination;
 						float step = speed * Time.deltaTime;
 						transform.position = Vector2.MoveTowards(transform.position, target.position, step);
+					if(target.position.x < transform.position.x){
+						print ("Should be facing left");
+						animator.SetInteger("Direction", 0);
+					} else if(target.position.x > transform.position.x){
+						print("Should be facing right");
+						animator.SetInteger("Direction", 1);
+					}
 				}
-
-
 		}
-		/*void FixedUpdate () {
-
-				if (Input.GetMouseButtonDown (0)) {
-						RaycastHit2D hit = Physics2D.Raycast (transform.position, -Vector2.up);
-						if (hit != null) {
-								print (hit.collider);
-						}
-				}
-	}*/
 }
 	
 

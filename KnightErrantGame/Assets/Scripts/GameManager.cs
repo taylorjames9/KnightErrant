@@ -16,6 +16,5 @@ public class GameManager : MonoBehaviour {
 
 				print ("This is from the gameManager:" + myDestination);
 
-	
 	}
 }
