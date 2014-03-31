@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Spot1_Script : MonoBehaviour {
 
+	public Transform myLandingSpot;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,7 +18,7 @@ public class Spot1_Script : MonoBehaviour {
 
 	void OnMouseDown (){
 
-				GameManager.myDestination = this.transform;
+				GameManager.myDestination = myLandingSpot.transform;
 				print ("This is from spot1: "+GameManager.myDestination);
 
 	}
