@@ -20,8 +20,17 @@ public class InventoryManager : MonoBehaviour {
 		public GameObject Boredom;
 		public GameObject work;
 
+		static bool gotPerspective;
+		static bool gotFailure;
+		static bool gotWork;
+		static bool gotBoredom;
+		static bool gotFrustration;
+		static bool gotLearning; 
+
 		// Use this for initialization
 		void Start () {
+
+				InventoryOnKnight.inventoryInPossessionList.Add (BusPass);
 
 				BusPass.SetActive(true);
 				Failure.SetActive(false);
@@ -39,31 +48,48 @@ public class InventoryManager : MonoBehaviour {
 				switch (GameManager.currentGameState) {
 				case GameManager.GameLocationState.Addict:
 						print ("We are now in the addict chapter");
-						Pers.SetActive(true);
+						Pers.SetActive (true);
+						if (!gotPerspective) {
+								InventoryOnKnight.inventoryInPossessionList.Add (Pers);
+								gotPerspective = true;
+						}
 						break;
 				case GameManager.GameLocationState.Prep:
 						print ("We are now in the prep chapter");
-						Failure.SetActive(true);
+						Failure.SetActive (true);
+						if (!gotFailure) {
+								InventoryOnKnight.inventoryInPossessionList.Add (Failure);
+								gotFailure = true;
+						}
 						break;
 				case GameManager.GameLocationState.Pond:
 						print ("We are now in the pond chapter");
-						Boredom.SetActive(true);
+						Boredom.SetActive (true);
+						if (!gotBoredom) {
+								InventoryOnKnight.inventoryInPossessionList.Add (Boredom);
+								gotBoredom = true;
+						}
 						break;
 				case GameManager.GameLocationState.Library:
 						print ("We are now in the library chapter");
 						work.SetActive (true);
+						if (!gotWork) {
+								InventoryOnKnight.inventoryInPossessionList.Add (work);
+								gotWork = true;
+						}
 						break;
 				case GameManager.GameLocationState.School:
 						print ("We are now in the school chapter");
-						Frustration.SetActive(true);
+						Frustration.SetActive (true);
+						if (!gotFrustration) {
+								InventoryOnKnight.inventoryInPossessionList.Add (Frustration);
+								gotFrustration = true;
+						}
 						break;
 				default:
 
 						break;
 				}
-
-
-
-	
+				print ("InventorySpot count " + InventoryOnKnight.inventoryInPossessionList.Count);
 	}
 }
