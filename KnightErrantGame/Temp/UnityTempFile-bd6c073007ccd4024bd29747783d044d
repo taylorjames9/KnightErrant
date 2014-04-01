@@ -54,6 +54,7 @@
 'Assets/Inventory/Scripts/Types/ArmorType.cs'
 'Assets/Inventory/Scripts/Types/ItemLevel.cs'
 'Assets/Inventory/Scripts/Types/WeaponType.cs'
+'Assets/Scripts/CameraCursorScript.cs'
 'Assets/Scripts/CursorScript.cs'
 'Assets/Scripts/GameManager.cs'
 'Assets/Scripts/Inventory.cs'

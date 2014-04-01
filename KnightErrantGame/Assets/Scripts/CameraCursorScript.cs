@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CursorScript : MonoBehaviour {
+public class CameraCursorScript : MonoBehaviour {
 
 	public Texture2D cursorTexture;
 	//public CursorMode cursorMode = CursorMode.Auto;
@@ -9,15 +9,6 @@ public class CursorScript : MonoBehaviour {
 
 	public int cursorSizeX  = 50;  // Your cursor size x
 	public int cursorSizeY = 50;  // Your cursor size y
-
-
-	/*public void OnMouseEnter () {
-		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-	}
-	public void OnMouseExit () {
-		Cursor.SetCursor(null, Vector2.zero, cursorMode);
-	}
-}*/
 
 
 	public void Start()

@@ -63,8 +63,10 @@
      <Compile Include="Assets\Inventory\Scripts\Types\ArmorType.cs" />
      <Compile Include="Assets\Inventory\Scripts\Types\ItemLevel.cs" />
      <Compile Include="Assets\Inventory\Scripts\Types\WeaponType.cs" />
+     <Compile Include="Assets\Scripts\CameraCursorScript.cs" />
      <Compile Include="Assets\Scripts\CursorScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\HoverOverMe.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\KnightController.cs" />
      <Compile Include="Assets\Scripts\Spot1_Script.cs" />

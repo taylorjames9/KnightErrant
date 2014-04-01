@@ -2,8 +2,7 @@
 -target:library
 -nowarn:0169
 -out:'Temp/Assembly-CSharp.dll'
--r:'/Applications/Unity4.3.3.app/Contents/Frameworks/Managed/UnityEngine.dll'
--r:'/Applications/Unity4.3.3.app/Contents/Frameworks/Managed/UnityEditor.dll'
+-r:'/Applications/Unity4.3.3.app/Contents/PlaybackEngines/WebPlayer/Managed/UnityEngine.dll'
 -define:UNITY_WEBPLAYER
 -define:WEBPLUG
 -define:ENABLE_MICROPHONE
@@ -33,10 +32,6 @@
 -define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
 -define:UNITY_4_3_3
 -define:UNITY_4_3
--define:ENABLE_PROFILER
--define:UNITY_EDITOR
--define:UNITY_EDITOR_OSX
--define:UNITY_TEAM_LICENSE
 'Assets/Inventory/Scripts/ChangeColor.cs'
 'Assets/Inventory/Scripts/Drag.cs'
 'Assets/Inventory/Scripts/Equip/Armor.cs'
@@ -54,7 +49,9 @@
 'Assets/Inventory/Scripts/Types/ArmorType.cs'
 'Assets/Inventory/Scripts/Types/ItemLevel.cs'
 'Assets/Inventory/Scripts/Types/WeaponType.cs'
+'Assets/Scripts/CameraCursorScript.cs'
 'Assets/Scripts/CursorScript.cs'
 'Assets/Scripts/GameManager.cs'
+'Assets/Scripts/Inventory.cs'
 'Assets/Scripts/KnightController.cs'
 'Assets/Scripts/Spot1_Script.cs'
