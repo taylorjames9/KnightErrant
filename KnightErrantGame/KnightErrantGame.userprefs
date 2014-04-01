@@ -1,13 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Spot1_Script.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/InventoryManager.cs">
     <Files>
-      <File FileName="../2DAnimation/Assets/Scripts/PlayerControl.cs" Line="3" Column="1" />
-      <File FileName="../2DAnimation/Assets/Scripts/playerController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CursorScript.cs" Line="8" Column="40" />
       <File FileName="Assets/Scripts/KnightController.cs" Line="10" Column="28" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Spot1_Script.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/InventorySpot.cs" Line="24" Column="3" />
+      <File FileName="Assets/Scripts/InventorItemScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/InventoryManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

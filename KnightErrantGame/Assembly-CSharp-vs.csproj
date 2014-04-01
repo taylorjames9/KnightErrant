@@ -67,7 +67,10 @@
      <Compile Include="Assets\Scripts\CursorScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HoverOverMe.cs" />
-     <Compile Include="Assets\Scripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\InventorItemScript.cs" />
+     <Compile Include="Assets\Scripts\InventoryManager.cs" />
+     <Compile Include="Assets\Scripts\InventoryOnKnight.cs" />
+     <Compile Include="Assets\Scripts\InventorySpot.cs" />
      <Compile Include="Assets\Scripts\KnightController.cs" />
      <Compile Include="Assets\Scripts\Spot1_Script.cs" />
      <Compile Include="Assets\Scripts\TextFollow.cs" />
