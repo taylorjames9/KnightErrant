@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
-
-
-		public static Transform myDestination; 
+public class TextFollow : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +10,8 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		//print ("This is from the gameManager:" + myDestination);
+		transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
 	}
 }
+

@@ -35,10 +35,10 @@ public class KnightController : MonoBehaviour {
 						float step = speed * Time.deltaTime;
 						transform.position = Vector2.MoveTowards(transform.position, target.position, step);
 					if(target.position.x < transform.position.x){
-						print ("Should be facing left");
+				//print ("Should be facing left");
 						animator.SetInteger("Direction", 2);
 					} else if(target.position.x > transform.position.x){
-						print("Should be facing right");
+				//print("Should be facing right");
 						animator.SetInteger("Direction", 1);
 					}
 
