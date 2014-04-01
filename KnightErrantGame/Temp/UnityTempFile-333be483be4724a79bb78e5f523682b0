@@ -62,3 +62,4 @@
 'Assets/Scripts/KnightController.cs'
 'Assets/Scripts/Spot1_Script.cs'
 'Assets/Scripts/TextFollow.cs'
+'Assets/Scripts/TextFollowGUI.cs'

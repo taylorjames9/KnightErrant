@@ -10,11 +10,31 @@ public class CameraCursorScript : MonoBehaviour {
 	public int cursorSizeX  = 50;  // Your cursor size x
 	public int cursorSizeY = 50;  // Your cursor size y
 
+	//public GUIText cursorText;
 
 	public void Start()
 	{
 		Screen.showCursor = false;
+		//cursorText.text = "";
 	}
+
+	void Update () {
+		//cursorText.transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+	}
+
+	/*void OnMouseEnter (Collider other) {
+		print ("TALK TO GUY");
+		if (other.name == "Spot_1") {
+
+			cursorText.text = "TALK TO GUY..."; 
+			print ("TALK TO GUY");
+		}
+		}
+
+	void OnMouseExit (Collider other) {
+		cursorText.text = "";
+	}*/
+
 
 	public void OnGUI()
 	{
