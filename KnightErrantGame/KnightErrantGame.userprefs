@@ -1,14 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/InventoryManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Reset.cs">
     <Files>
       <File FileName="Assets/Scripts/CursorScript.cs" Line="8" Column="40" />
-      <File FileName="Assets/Scripts/KnightController.cs" Line="10" Column="28" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Spot1_Script.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/InventorySpot.cs" Line="24" Column="3" />
+      <File FileName="Assets/Scripts/KnightController.cs" Line="39" Column="22" />
+      <File FileName="Assets/Scripts/InventoryOnKnight.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="67" Column="38" />
+      <File FileName="Assets/Scripts/Spot1_Script.cs" Line="35" Column="78" />
+      <File FileName="Assets/Scripts/InventorySpot.cs" Line="24" Column="6" />
       <File FileName="Assets/Scripts/InventorItemScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/InventoryManager.cs" Line="86" Column="31" />
+      <File FileName="../../BouncyBalls/Assets/Scripts/CanonWCoroutine.cs" Line="101" Column="42" />
+      <File FileName="Assets/Scripts/Reset.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

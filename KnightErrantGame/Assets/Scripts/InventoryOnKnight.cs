@@ -11,12 +11,7 @@ public class InventoryOnKnight : MonoBehaviour {
 	public static List<GameObject> inventoryInPossessionList = new List<GameObject>();
 
 
-	static bool gotPerspective;
-	static bool gotFailure;
-	static bool gotWork;
-	static bool gotBoredom;
-	static bool gotFrustration;
-	static bool gotLearning; 
+
 
 	//Here you add 3 BadGuys to the List
 
@@ -24,7 +19,7 @@ public class InventoryOnKnight : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame

@@ -51,6 +51,13 @@ public class GameManager : MonoBehaviour {
 				case GameLocationState.Grail:
 						print ("We are now in the Grail chapter");
 
+						if (InventoryOnKnight.inventoryInPossessionList.Count >= 6) {
+								StartCoroutine (PlayBadEnding ("GoodEnding"));
+						} else {
+								StartCoroutine (PlayBadEnding ("BadEnding"));
+						}
+
+
 						break;
 				case GameLocationState.Between:
 						print ("I am between states");
@@ -60,4 +67,12 @@ public class GameManager : MonoBehaviour {
 						break;
 				}
 	}
+
+
+		IEnumerator PlayBadEnding(string endingType){
+				yield return new WaitForSeconds (1.0f);
+				Application.LoadLevel (endingType);
+
+		}
+
 }

@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\InventoryOnKnight.cs" />
      <Compile Include="Assets\Scripts\InventorySpot.cs" />
      <Compile Include="Assets\Scripts\KnightController.cs" />
+     <Compile Include="Assets\Scripts\Reset.cs" />
      <Compile Include="Assets\Scripts\Spot1_Script.cs" />
      <Compile Include="Assets\Scripts\TextFollow.cs" />
      <Compile Include="Assets\Scripts\TextFollowGUI.cs" />

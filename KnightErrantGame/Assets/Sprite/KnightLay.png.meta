@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: 9947fbcd6cea14daf99b1b50d5de854e
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: unnamed-11_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 135
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 136
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_2
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 135
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_3
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 134
+        width: 51
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_4
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 133
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_5
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 131
+        width: 72
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_6
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 132
+        width: 85
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_7
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 129
+        width: 82
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_8
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 130
+        width: 89
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 23
+        width: 89
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_10
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 22
+        width: 82
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_11
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 24
+        width: 77
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_12
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 24
+        width: 76
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_13
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 26
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_14
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 28
+        width: 50
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_15
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 28
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_16
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 29
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: unnamed-11_17
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 29
+        width: 51
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 
