@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
 		public GameObject knight;
 		public static Transform myDestination; 
-
+		public AudioClip knightWalk;
 
 
 
@@ -66,6 +66,16 @@ public class GameManager : MonoBehaviour {
 
 						break;
 				}
+
+				if (!KnightController.isMoving) {
+				//audio.PlayOneShot (knightWalk, 1.0f);
+
+						audio.Play ();
+				} else {
+						//audio.Stop ();
+				}
+
+
 	}
 
 

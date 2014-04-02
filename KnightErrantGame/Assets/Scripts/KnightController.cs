@@ -7,20 +7,23 @@ public class KnightController : MonoBehaviour {
 
 	Transform target;
 
-	public AudioClip knightWalk;
+		public AudioClip knightWalk;
+
+		public GameObject knightManager;
 
 	float speed = 2.0f;
 	bool move;
 		//Vector3 wantedPosition;
 
 	private Animator animator;
+		public static bool isMoving;
 
 	//float speed = 5.0f; 
 
 	// Use this for initialization
 	void Start () {
 		
-		
+				//knightManager.audio.Play ();
 		animator = this.GetComponent<Animator>();
 		target = transform;
 
@@ -32,26 +35,32 @@ public class KnightController : MonoBehaviour {
 				//print ("Dist =" + dist);
 
 				if (GameManager.myDestination != null) {
+						isMoving = true;
 						target = GameManager.myDestination;
 						float step = speed * Time.deltaTime;
 						transform.position = Vector2.MoveTowards(transform.position, target.position, step);
 					if(target.position.x < transform.position.x){
 						animator.SetInteger("Direction", 2);
-								audio.clip = knightWalk;
-								audio.Play();
+								//audio.clip = knightWalk;
+								//knightManager.audio.Play();
+								//audio.PlayOneShot (knightWalk, 1.0f);
+								//audio.Play ();
 								//audio.Play(knightWalk);
 								//audio.Play(); 
 					} else if(target.position.x > transform.position.x){
 						animator.SetInteger("Direction", 1);
-								audio.clip = knightWalk;
-								audio.Play();
+								//audio.clip = knightWalk;
+								//audio.Play();
+								/////////audio.PlayOneShot (knightWalk, 1.0f);
 								//audio.Play(knightWalk);
 								//audio.Play(); 
 					}
 						if (dist <= 0.1f) {
 						animator.SetInteger("Direction", 0);
-								audio.clip = knightWalk;
-								audio.Stop ();
+								//audio.clip = knightWalk;
+								//knightManager.audio.Stop ();
+								//audio.Stop ();
+								isMoving = false;
 					}
 				}
 		}
