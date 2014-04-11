@@ -46,23 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Inventory\Scripts\ChangeColor.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Drag.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Equip\Armor.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Equip\Equip.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Equip\Weapon.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Examples\CharScreen.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Examples\ItemManagerExample.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Item\Item.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Item\ItemManager.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Item\ItemNode.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Item\ItemNodeArmor.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Item\ItemNodeWeapon.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Item\UseableItem.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Overlay.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Types\ArmorType.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Types\ItemLevel.cs" />
-     <Compile Include="Assets\Inventory\Scripts\Types\WeaponType.cs" />
      <Compile Include="Assets\Scripts\CameraCursorScript.cs" />
      <Compile Include="Assets\Scripts\CursorScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -73,9 +56,11 @@
      <Compile Include="Assets\Scripts\InventorySpot.cs" />
      <Compile Include="Assets\Scripts\KnightController.cs" />
      <Compile Include="Assets\Scripts\Reset.cs" />
-     <Compile Include="Assets\Scripts\Spot1_Script.cs" />
+     <Compile Include="Assets\Scripts\ScrollCloseBTN.cs" />
+     <Compile Include="Assets\Scripts\Spot_ArriveScript.cs" />
      <Compile Include="Assets\Scripts\TextFollow.cs" />
      <Compile Include="Assets\Scripts\TextFollowGUI.cs" />
+     <Compile Include="Assets\Scripts\swirlScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

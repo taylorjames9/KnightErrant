@@ -16,27 +16,25 @@ public class InventoryManager : MonoBehaviour {
 		public GameObject Failure;
 		public GameObject Frustration;
 		public GameObject Pers;
-		public GameObject MLearning;
 		public GameObject Boredom;
 		public GameObject work;
 
+		public static bool gotBusPass;
 		static bool gotPerspective;
 		static bool gotFailure;
 		static bool gotWork;
 		static bool gotBoredom;
 		static bool gotFrustration;
-		static bool gotLearning; 
 
 		// Use this for initialization
 		void Start () {
 
-				InventoryOnKnight.inventoryInPossessionList.Add (BusPass);
+		//InventoryOnKnight.inventoryInPossessionList.Add (BusPass);
 
-				BusPass.SetActive(true);
+				BusPass.SetActive(false);
 				Failure.SetActive(false);
 				Frustration.SetActive(false);
 				Pers.SetActive(false);
-				MLearning.SetActive(false);
 				Boredom.SetActive(false);
 				work.SetActive (false);
 
@@ -46,10 +44,20 @@ public class InventoryManager : MonoBehaviour {
 	void Update () {
 
 				switch (GameManager.currentGameState) {
+				
+				case GameManager.GameLocationState.Trash:
+					print ("We are now in the Trash chapter");
+					
+				if (!gotBusPass && GameManager.lookInTrash) {
+						BusPass.SetActive (true);
+						InventoryOnKnight.inventoryInPossessionList.Add (BusPass);
+						gotBusPass = true;
+					}
+						break;
 				case GameManager.GameLocationState.Addict:
 						print ("We are now in the addict chapter");
 						Pers.SetActive (true);
-						if (!gotPerspective) {
+					if (!gotPerspective) {
 								InventoryOnKnight.inventoryInPossessionList.Add (Pers);
 								gotPerspective = true;
 						}

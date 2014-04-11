@@ -41,19 +41,13 @@ public class KnightController : MonoBehaviour {
 						transform.position = Vector2.MoveTowards(transform.position, target.position, step);
 					if(target.position.x < transform.position.x){
 						animator.SetInteger("Direction", 2);
-								//audio.clip = knightWalk;
-								//knightManager.audio.Play();
-								//audio.PlayOneShot (knightWalk, 1.0f);
-								//audio.Play ();
-								//audio.Play(knightWalk);
-								//audio.Play(); 
+
+
 					} else if(target.position.x > transform.position.x){
 						animator.SetInteger("Direction", 1);
-								//audio.clip = knightWalk;
-								//audio.Play();
-								/////////audio.PlayOneShot (knightWalk, 1.0f);
-								//audio.Play(knightWalk);
-								//audio.Play(); 
+
+
+
 					}
 						if (dist <= 0.1f) {
 						animator.SetInteger("Direction", 0);
