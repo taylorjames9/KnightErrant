@@ -12,11 +12,7 @@ public class HoverOverMe : MonoBehaviour {
 
 
 	public void OnMouseEnter () {
-		print ("Entered mouseOver of " + gameObject.name);
 		myHoverOverTXT.renderer.enabled = true;
-
-		//myHoverOverTXT.text = "Look Inside";
-
 
 	}
 	public void OnMouseExit () {

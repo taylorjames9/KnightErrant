@@ -7,10 +7,15 @@ public class Spot_ArriveScript : MonoBehaviour {
 	public Transform knight;
 
 
+		public static bool justArrivedAtLib;
+		public static bool justArrivedAtPond;
+
+		public static bool occupied;
+
 	void OnMouseDown (){
 
+				if(!occupied)
 				GameManager.myDestination = myLandingSpot.transform;
-			
 		}
 
 		void Update(){
@@ -24,37 +29,43 @@ public class Spot_ArriveScript : MonoBehaviour {
 						//KnightController.isMoving = false;
 
 				}
-				else if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot1") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot1") {
 						print ("I have arrived at addict");
 						GameManager.currentGameState  = GameManager.GameLocationState.Addict; 
 						//KnightController.isMoving = false;
 
 				}
-				else if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot2") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot2") {
 						print ("I have arrived at: Prep");
 						GameManager.currentGameState  = GameManager.GameLocationState.Prep; 
 						//KnightController.isMoving = false;
 
 				}
-				else if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot3") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot3" && justArrivedAtPond == false && PondScript.hitThePond == 0) {
 						print ("I have arrived at: pond");
-						GameManager.currentGameState  = GameManager.GameLocationState.Pond; 
-						//KnightController.isMoving = false;
-
+						GameManager.currentGameState = GameManager.GameLocationState.Pond; 
+						GameManager.currentPondState = GameManager.PondState.Arrived;
+						justArrivedAtPond = true;
+						justArrivedAtLib = false;
+				} else {
+						//justArrivedAtPond = false;
 				}
-				else if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot4") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot4") {
 						print ("I have arrived at: school");
 						GameManager.currentGameState  = GameManager.GameLocationState.School; 
 						//KnightController.isMoving = false;
 
 				}
-				else if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot5") {
+				if (myLandingSpot.gameObject.name == "LandingSpot5" && dist < 0.1 && justArrivedAtLib == false && LibraryScript.hitTheLibrary == 0) {
 						print ("I have arrived at: Library");
-						GameManager.currentGameState  = GameManager.GameLocationState.Library; 
-						//KnightController.isMoving = false;
-
+						GameManager.currentGameState = GameManager.GameLocationState.Library; 
+						GameManager.currentStudyState = GameManager.StudyState.Arrived;
+						justArrivedAtLib = true;
+						justArrivedAtPond = false;
+				} else {
+						//justArrivedAtLib = false;
 				}
-				else if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot6") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot6") {
 						print ("I have arrived at: Grail");
 						GameManager.currentGameState  = GameManager.GameLocationState.Swirl; 
 						//KnightController.isMoving = false;

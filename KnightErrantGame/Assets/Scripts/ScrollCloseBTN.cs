@@ -45,7 +45,9 @@ public class ScrollCloseBTN : MonoBehaviour {
 			break;
 		case GameManager.GameLocationState.Library:
 			//showedStudyText = true;
-			scrollOBJ.SetActive (false);
+			if (GameManager.showedStudyText) {
+					scrollOBJ.SetActive (false);
+			}
 			break;
 
 		default:

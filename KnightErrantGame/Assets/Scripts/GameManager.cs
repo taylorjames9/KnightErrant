@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour {
 		public GameObject iconOnScroll;
 		public  Texture[] textures;
 
-	public static bool showedBeginningText;
-	public static  bool showedTrashText;
-	public static  bool showedPrepText;
-	public static  bool showedLiquorText;
-	public static  bool showedPondText;
-	public static  bool showedSchoolText;
-	public static  bool showedStudyText;
+		public static bool showedBeginningText;
+		public static  bool showedTrashText;
+		public static  bool showedPrepText;
+		public static  bool showedLiquorText;
+		public static  bool showedPondText;
+		public static  bool showedSchoolText;
+		public static  bool showedStudyText;
 
 
 		public enum GameLocationState{Addict, Prep, Pond, Library, School, Trash, Swirl, Beginning, Between};
@@ -27,10 +27,12 @@ public class GameManager : MonoBehaviour {
 		public enum PondState {Arrived, Laying, StandAfterLaying, OpenScroll, Void};
 		public static PondState currentPondState;
 
-
+		public enum StudyState {WalkingThereToLib, Arrived, SittingAction, StaySeated, Stand, OpenScroll, Void};
+		public static StudyState currentStudyState;
 
 		public TextMesh atTrashText;
 		public TextMesh atPondText;
+		public TextMesh atLibraryText;
 		
 
 		public static bool lookInTrash; 
@@ -43,11 +45,16 @@ public class GameManager : MonoBehaviour {
 
 		currentGameState = GameLocationState.Beginning; 
 				scrollParchment.SetActive (false);
+
+				currentStudyState = StudyState.Void;
+				currentPondState = PondState.Void;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+
+				//print ("Spot_ArriveScript.justArrived "+Spot_ArriveScript.justArrived);
 
 				switch (currentGameState) {
 				case GameLocationState.Beginning:
@@ -65,36 +72,48 @@ public class GameManager : MonoBehaviour {
 						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 
 						break;
+				
 				case GameLocationState.Pond:
 						print ("We are now in the pond chapter");
 						//KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 						switch (currentPondState) {
 						case PondState.Arrived:
-								atPondText.text = "Lay Down \n By Pond?";
+								atPondText.text = "Lay Down \n by Pond?";
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
-								if (Input.GetMouseButton (0)) {
+								if (PondScript.hitThePond ==1) {
 										KnightController.currentAnimState = KnightController.CurrentAnimationState.LayingDown;
 										currentPondState = PondState.Laying;
 								}
+								Spot_ArriveScript.occupied = false;
 								break;
 						case PondState.Laying:
+								Spot_ArriveScript.occupied = true;
 								StartCoroutine (IsLayingThere());
 								break;
 						case PondState.StandAfterLaying:
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.StandingUp;
+								PondScript.hitThePond = 0;
 								//GameLocationState
 								currentPondState = PondState.OpenScroll;
 								break;
 						case PondState.OpenScroll:
-								showedPondText = true;
-								scrollParchment.SetActive (true);
-								scrollTXT.text = "You received the breast plate \nof profound boredom.";
-								iconOnScroll.renderer.material.mainTexture = textures [4];
+
+								if (!showedPondText) {
+										Spot_ArriveScript.occupied = true;
+										scrollParchment.SetActive (true);
+										scrollTXT.text = "You received the breast plate \nof profound boredom.";
+										iconOnScroll.renderer.material.mainTexture = textures [4];
+										showedPondText = true;
+								}
 
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								print ("currentGameState = " + currentGameState);
-								currentGameState = GameLocationState.Between;
+								//currentGameState = GameLocationState.Between;
 								currentPondState = PondState.Void;
+								break;
+						case PondState.Void:
+								atPondText.text = "Lay Down \n by Pond?";
+								Spot_ArriveScript.occupied = false;
 								break;
 						default:
 								break;
@@ -102,9 +121,65 @@ public class GameManager : MonoBehaviour {
 						break;
 
 				case GameLocationState.Library:
-								print ("We are now in the library chapter");
-						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+						print ("We are now in the library chapter");
 
+						switch (currentStudyState) {
+						case StudyState.WalkingThereToLib:
+								break;
+						case StudyState.Arrived:
+								Spot_ArriveScript.occupied = false;
+								print ("LibraryState is ARRIVED");
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								atLibraryText.text = "Sit to read?";
+								if (LibraryScript.hitTheLibrary == 1) {
+										print ("LibraryState is ARRIVED and nOW SITTING");
+										//LibraryScript.hitTheLibrary = 0;
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.SittingToRead;
+										currentStudyState = StudyState.StaySeated;
+								} else {
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+
+								}
+								break;
+						case StudyState.StaySeated:
+								Spot_ArriveScript.occupied = true;
+								print ("LibraryState is STAYSEATED");
+								atLibraryText.text = "Up and at 'em?";
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.StaySeated;
+								if (LibraryScript.hitTheLibrary == 2) {
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.StandFromReading;
+										LibraryScript.hitTheLibrary = 0;
+										currentStudyState = StudyState.Stand;
+
+								}
+								break;
+						case StudyState.Stand:
+								print ("LibraryState is STAND");
+								atLibraryText.text = "Sit to read?";
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								currentStudyState = StudyState.OpenScroll;
+								break;
+						case StudyState.OpenScroll:
+								if(!showedStudyText){
+								Spot_ArriveScript.occupied = true;
+								print ("LibraryState is OPENSCROLL");
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								scrollParchment.SetActive (true);
+								scrollTXT.text = "You received the chalice of \nknowledge. Or something like that.";
+								showedStudyText = true;
+						}
+								iconOnScroll.renderer.material.mainTexture = textures [3];
+								currentStudyState = StudyState.Void;
+								//Spot_ArriveScript.justArrivedAtLib = false;
+								break;
+						case StudyState.Void:
+								atLibraryText.text = "Sit to read";
+								Spot_ArriveScript.occupied = false;
+								break;
+						default:
+								break;
+
+						}
 
 					break;
 				case GameLocationState.School:
@@ -140,13 +215,13 @@ public class GameManager : MonoBehaviour {
 								}
 								break;
 
-						case GameLocationState.Between:
+				case GameLocationState.Between:
 								print ("We are now in the Between");
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								break;
 
-						default:
-								break;
+				default:
+					break;
 						}
 
 				/*if (!KnightController.isMoving) {
@@ -164,7 +239,7 @@ public class GameManager : MonoBehaviour {
 				yield return new WaitForSeconds (2.0f);
 				KnightController.currentAnimState = KnightController.CurrentAnimationState.LayingThere;
 				atPondText.text = "Up and at 'em?";
-				if (Input.GetMouseButton (0)) {
+				if (PondScript.hitThePond ==2) {
 						currentPondState = PondState.StandAfterLaying;
 				}
 				yield return new WaitForSeconds (0);

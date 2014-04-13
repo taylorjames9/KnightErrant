@@ -18,7 +18,7 @@ public class KnightController : MonoBehaviour {
 	private Animator animator;
 	public static bool isMoving;
 
-		public enum CurrentAnimationState {IdleWait, WalkingRight, WalkingLeft, LayingDown, LayingThere, StandingUp, SittingToRead, StandFromReading, PokeDragon};
+		public enum CurrentAnimationState {IdleWait, WalkingRight, WalkingLeft, LayingDown, LayingThere, StandingUp, SittingToRead, StaySeated, StandFromReading, PokeDragon};
 		public static CurrentAnimationState currentAnimState;
 
 	//float speed = 5.0f; 
@@ -74,8 +74,22 @@ public class KnightController : MonoBehaviour {
 						animator.SetInteger ("Direction", 5);
 						isMoving = true;
 						break;
-
+				case CurrentAnimationState.SittingToRead:
+						animator.SetInteger ("Direction", 6);
+						isMoving = true;
+						break;
+				case CurrentAnimationState.StaySeated:
+						isMoving = false;
+						animator.SetInteger ("Direction", 7);
+						break;
+				case CurrentAnimationState.StandFromReading:
+						animator.SetInteger ("Direction", 8);
+						isMoving = true;
+						break;
+				default:
+						break;
 				}
+
 		}
 
 		public IEnumerator StandUpToStand(){
