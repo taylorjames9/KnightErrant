@@ -19,7 +19,6 @@ public class AudioPlay : MonoBehaviour {
 						if (!audio.isPlaying) {
 								audio.Play ();
 								audio.loop = true;
-
 						}
 
 				} else {

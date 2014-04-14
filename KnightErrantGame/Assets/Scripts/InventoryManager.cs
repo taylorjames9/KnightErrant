@@ -64,8 +64,9 @@ public class InventoryManager : MonoBehaviour {
 						break;
 				case GameManager.GameLocationState.Prep:
 						print ("We are now in the prep chapter");
-						Failure.SetActive (true);
-						if (!gotFailure) {
+
+						if (!gotFailure && GameManager.showedSATQ && GameManager.currentPrepState == GameManager.PrepState.Void) {
+								Failure.SetActive (true);
 								InventoryOnKnight.inventoryInPossessionList.Add (Failure);
 								gotFailure = true;
 						}

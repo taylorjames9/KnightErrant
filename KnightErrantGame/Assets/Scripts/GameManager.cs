@@ -57,10 +57,19 @@ public class GameManager : MonoBehaviour {
 
 		currentGameState = GameLocationState.Beginning; 
 				scrollParchment.SetActive (false);
-
+				showedBeginningText = false;
 				currentStudyState = StudyState.Void;
 				currentPondState = PondState.Void;
 				SATQ.SetActive (false);
+
+				showedBeginningText = false;
+				showedTrashText = false;
+				showedPrepText = false;
+				showedLiquorText = false;
+				showedPondText = false;
+				showedSchoolText = false;
+				showedStudyText = false;
+				showedSATQ = false;
 	}
 	
 	// Update is called once per frame
@@ -81,28 +90,34 @@ public class GameManager : MonoBehaviour {
 						print ("We are now in the addict chapter");
 						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 						break;
-				case GameLocationState.Prep:
-						print ("We are now in the prep chapter");
 
+
+				case GameLocationState.Prep:
 						switch (currentPrepState) {
 						case PrepState.Arrived:
 								atPrepText.text = "Try thy hand at the\nformiddable test?";
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								print ("hitThePrepBuildingCount = " + PrepScript.hitThePrep);
-								if (PrepScript.hitThePrep  == 2) {
-
+								if (PrepScript.hitThePrep%2 ==1) {
 										SATQ.SetActive (true);
 										showedSATQ = true;
-										currentPrepState = PrepState.Test;
-										Spot_ArriveScript.occupied = true;
 										PrepScript.hitThePrep++;
-
+										Spot_ArriveScript.occupied = true;
+										//currentPrepState = PrepState.Test;
 								}
 								break;
 						case PrepState.Test:
-
+								break;
+						case PrepState.OpenScroll:
+								StartCoroutine (OpenPrepScroll ());
+								Spot_ArriveScript.occupied = true;
 
 								break;
+						case PrepState.Void:
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								Spot_ArriveScript.occupied = false;
+								break;
+
 						default:
 								break;
 
@@ -315,4 +330,18 @@ public class GameManager : MonoBehaviour {
 				poofAudio = false;
 				yield return new WaitForSeconds (0);
 		}
+		IEnumerator OpenPrepScroll(){
+				yield return new WaitForSeconds (1.5f);
+				if (!showedPrepText) {
+						Spot_ArriveScript.occupied = true;
+						scrollParchment.SetActive (true);
+						scrollTXT.text = "You received the shin guards \nof unbelievable failure.";
+						iconOnScroll.renderer.material.mainTexture = textures [2];
+						showedPrepText = true;
+				}
+				yield return new WaitForSeconds (0);
+		}
+
+
+
 }

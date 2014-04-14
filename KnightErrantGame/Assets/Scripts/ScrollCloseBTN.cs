@@ -36,11 +36,11 @@ public class ScrollCloseBTN : MonoBehaviour {
 			scrollOBJ.SetActive (false);
 			break;
 				case GameManager.GameLocationState.Prep:
-						//if (GameManager.showedSATQ) {			
-
-								scrollOBJ.SetActive (false);
-								Spot_ArriveScript.occupied = false;
-						//}
+						if (GameManager.showedPrepText) {			
+						scrollOBJ.SetActive (false);
+						Spot_ArriveScript.occupied = false;
+						GameManager.currentPrepState = GameManager.PrepState.Void;
+						}
 			break;
 		case GameManager.GameLocationState.Pond:
 			if (GameManager.showedPondText) {

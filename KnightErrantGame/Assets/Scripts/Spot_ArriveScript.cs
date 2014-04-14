@@ -9,6 +9,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 
 		public static bool justArrivedAtLib;
 		public static bool justArrivedAtPond;
+		public static bool justArrivedAtPrep;
 
 		public static bool occupied;
 
@@ -27,19 +28,28 @@ public class Spot_ArriveScript : MonoBehaviour {
 						print ("I have arrived at trash");
 						GameManager.currentGameState = GameManager.GameLocationState.Trash; 
 						//KnightController.isMoving = false;
+						justArrivedAtPond = false;
+						justArrivedAtLib = false;
+						justArrivedAtPrep = false;
 
 				}
 				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot1") {
 						print ("I have arrived at addict");
 						GameManager.currentGameState  = GameManager.GameLocationState.Addict; 
 						//KnightController.isMoving = false;
+						justArrivedAtPond = false;
+						justArrivedAtLib = false;
+						justArrivedAtPrep = false;
 
 				}
-				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot2") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot2" && justArrivedAtPrep == false) {
 						print ("I have arrived at: Prep");
 						GameManager.currentGameState  = GameManager.GameLocationState.Prep; 
+						PrepScript.hitThePrep = 0;
 						GameManager.currentPrepState = GameManager.PrepState.Arrived;
-
+						justArrivedAtPrep = true;
+						justArrivedAtLib = false;
+						justArrivedAtPond = false;
 						//KnightController.isMoving = false;
 
 				}
@@ -49,12 +59,16 @@ public class Spot_ArriveScript : MonoBehaviour {
 						GameManager.currentPondState = GameManager.PondState.Arrived;
 						justArrivedAtPond = true;
 						justArrivedAtLib = false;
+						justArrivedAtPrep = false;
 				} else {
 						//justArrivedAtPond = false;
 				}
 				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot4") {
 						print ("I have arrived at: school");
 						GameManager.currentGameState  = GameManager.GameLocationState.School; 
+						justArrivedAtPond = false;
+						justArrivedAtLib = false;
+						justArrivedAtPrep = false;
 						//KnightController.isMoving = false;
 
 				}
@@ -64,6 +78,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						GameManager.currentStudyState = GameManager.StudyState.Arrived;
 						justArrivedAtLib = true;
 						justArrivedAtPond = false;
+						justArrivedAtPrep = false;
 				} else {
 						//justArrivedAtLib = false;
 				}

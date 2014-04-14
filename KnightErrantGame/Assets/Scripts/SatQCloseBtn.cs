@@ -19,5 +19,8 @@ public class SatQCloseBtn : MonoBehaviour {
 		public void OnMouseDown(){
 				print ("HITTING THE SAT CLOSE BTN");
 				SATQ.SetActive (false);
+				PrepScript.hitThePrep = 0;
+				GameManager.currentPrepState = GameManager.PrepState.OpenScroll;
+				//GameManager.currentPrepState = GameManager.PrepState.Test;
 		}
 }
