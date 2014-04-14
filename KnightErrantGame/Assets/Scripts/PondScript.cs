@@ -8,7 +8,7 @@ public class PondScript : MonoBehaviour {
 
 		// Use this for initialization
 		void Start () {
-
+				hitThePond = 0;
 		}
 
 		void OnMouseUp(){

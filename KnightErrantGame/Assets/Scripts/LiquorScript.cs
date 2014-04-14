@@ -8,6 +8,8 @@ public class LiquorScript : MonoBehaviour {
 
 		// Use this for initialization
 		void Start () {
+				hitTheGuy = 0;
+				gaveBusToGuy = false;
 
 		}
 

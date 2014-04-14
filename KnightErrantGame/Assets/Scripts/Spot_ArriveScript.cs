@@ -29,7 +29,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot0") {
 						print ("I have arrived at trash");
 						GameManager.currentGameState = GameManager.GameLocationState.Trash; 
-						//KnightController.isMoving = false;
+						justArrivedSchool = false;
 						justArrivedAtPond = false;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;
@@ -40,6 +40,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						print ("I have arrived at addict");
 						GameManager.currentGameState  = GameManager.GameLocationState.Addict; 
 						GameManager.currentLiquorState = GameManager.LiquorState.Arrived;
+						justArrivedSchool = false;
 						justArrivedAtLiquor = true;
 						justArrivedAtPond = false;
 						justArrivedAtLib = false;
@@ -51,6 +52,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						GameManager.currentGameState  = GameManager.GameLocationState.Prep; 
 						PrepScript.hitThePrep = 0;
 						GameManager.currentPrepState = GameManager.PrepState.Arrived;
+						justArrivedSchool = false;
 						justArrivedAtPrep = true;
 						justArrivedAtLib = false;
 						justArrivedAtPond = false;
@@ -61,6 +63,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						print ("I have arrived at: pond");
 						GameManager.currentGameState = GameManager.GameLocationState.Pond; 
 						GameManager.currentPondState = GameManager.PondState.Arrived;
+						justArrivedSchool = false;
 						justArrivedAtPond = true;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;
@@ -83,6 +86,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						print ("I have arrived at: Library");
 						GameManager.currentGameState = GameManager.GameLocationState.Library; 
 						GameManager.currentStudyState = GameManager.StudyState.Arrived;
+						justArrivedSchool = false;
 						justArrivedAtLib = true;
 						justArrivedAtPond = false;
 						justArrivedAtPrep = false;
@@ -93,6 +97,11 @@ public class Spot_ArriveScript : MonoBehaviour {
 				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot6") {
 						print ("I have arrived at: Grail");
 						GameManager.currentGameState  = GameManager.GameLocationState.Swirl; 
+						justArrivedSchool = false;
+						justArrivedAtPond = false;
+						justArrivedAtLib = false;
+						justArrivedAtPrep = false;
+						justArrivedAtLiquor = false;
 						//KnightController.isMoving = false;
 				}
 		}

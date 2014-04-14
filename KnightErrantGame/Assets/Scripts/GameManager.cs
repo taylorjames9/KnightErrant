@@ -76,6 +76,14 @@ public class GameManager : MonoBehaviour {
 				showedSchoolText = false;
 				showedStudyText = false;
 				showedSATQ = false;
+				showedGuyStory = false;
+
+				atTrashText.text = "Examine";
+				atPondText.text = "Go to Pond";
+				atLibraryText.text = "Study";
+				atPrepText.text = "Go to SAT\nPrep Center";
+				atSchoolText.text = "Approach School";
+
 	}
 	
 	// Update is called once per frame
@@ -157,11 +165,11 @@ public class GameManager : MonoBehaviour {
 								}
 								break;
 						case PrepState.Test:
+								Spot_ArriveScript.occupied = true;
 								break;
 						case PrepState.OpenScroll:
 								StartCoroutine (OpenPrepScroll ());
-
-
+								Spot_ArriveScript.occupied = true;
 								break;
 						case PrepState.Void:
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
@@ -170,13 +178,11 @@ public class GameManager : MonoBehaviour {
 
 						default:
 								break;
-
 						}
 						break;
 				
 				case GameLocationState.Pond:
 						print ("We are now in the pond chapter");
-						//KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 						switch (currentPondState) {
 						case PondState.Arrived:
 								atPondText.text = "Lie Down \n by Pond?";
@@ -213,7 +219,7 @@ public class GameManager : MonoBehaviour {
 								currentPondState = PondState.Void;
 								break;
 						case PondState.Void:
-								atPondText.text = "Lay Down \n by Pond?";
+								atPondText.text = "Lie Down \n by Pond?";
 								Spot_ArriveScript.occupied = false;
 								break;
 						default:
@@ -239,7 +245,7 @@ public class GameManager : MonoBehaviour {
 										currentStudyState = StudyState.StaySeated;
 								} else {
 										KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
-										LibraryScript.hitTheLibrary = 0;
+										//LibraryScript.hitTheLibrary = 0;
 								}
 								break;
 						case StudyState.StaySeated:
@@ -249,7 +255,7 @@ public class GameManager : MonoBehaviour {
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.StaySeated;
 								if (LibraryScript.hitTheLibrary == 2) {
 										KnightController.currentAnimState = KnightController.CurrentAnimationState.StandFromReading;
-										LibraryScript.hitTheLibrary = 0;
+										//LibraryScript.hitTheLibrary = 0;
 										currentStudyState = StudyState.Stand;
 
 								}
@@ -259,6 +265,7 @@ public class GameManager : MonoBehaviour {
 								atLibraryText.text = "Sit to read?";
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								currentStudyState = StudyState.OpenScroll;
+								LibraryScript.hitTheLibrary = 0;
 								break;
 						case StudyState.OpenScroll:
 								if(!showedStudyText){
@@ -276,6 +283,7 @@ public class GameManager : MonoBehaviour {
 						case StudyState.Void:
 								atLibraryText.text = "Sit to read";
 								Spot_ArriveScript.occupied = false;
+								LibraryScript.hitTheLibrary = 0;
 								break;
 						default:
 								break;

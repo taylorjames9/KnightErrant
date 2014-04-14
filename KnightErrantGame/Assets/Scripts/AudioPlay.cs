@@ -3,9 +3,6 @@ using System.Collections;
 
 public class AudioPlay : MonoBehaviour {
 
-
-		//private AudioClip myClip;
-
 	// Use this for initialization
 	void Start () {
 

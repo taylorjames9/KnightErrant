@@ -7,7 +7,7 @@ public class PrepScript : MonoBehaviour {
 
 		// Use this for initialization
 		void Start () {
-
+				hitThePrep = 0;
 		}
 
 		void OnMouseUp(){

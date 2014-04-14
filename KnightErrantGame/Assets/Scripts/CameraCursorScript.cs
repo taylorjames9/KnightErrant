@@ -17,6 +17,9 @@ public class CameraCursorScript : MonoBehaviour {
 	public void Start()
 	{
 		Screen.showCursor = false;
+				tappedBusPass = false;
+				currentlyHaveBusFinger = false;
+
 	}
 
 	void Update () {

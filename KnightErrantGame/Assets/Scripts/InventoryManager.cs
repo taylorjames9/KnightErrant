@@ -38,6 +38,12 @@ public class InventoryManager : MonoBehaviour {
 				Boredom.SetActive(false);
 				work.SetActive (false);
 
+				gotBusPass = false;
+				gotPerspective = false;
+				gotFailure = false;
+				gotWork = false;
+				gotBoredom = false;
+				gotFrustration = false;
 		}
 	
 	// Update is called once per frame
