@@ -43,10 +43,13 @@ public class InventoryManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+				print ("STATUS OF PERS: " + gotPerspective);
+				print ("STATUS OF GameManager.showedLiquorText " + GameManager.showedLiquorText);
+
 				switch (GameManager.currentGameState) {
 				
 				case GameManager.GameLocationState.Trash:
-					print ("We are now in the Trash chapter");
+						//print ("We are now in the Trash chapter");
 					
 				if (!gotBusPass && GameManager.lookInTrash) {
 						BusPass.SetActive (true);
@@ -55,7 +58,7 @@ public class InventoryManager : MonoBehaviour {
 					}
 						break;
 				case GameManager.GameLocationState.Addict:
-						print ("We are now in the addict chapter");
+						//print ("We are now in the addict chapter");
 
 						if (!gotPerspective && GameManager.showedLiquorText && GameManager.currentLiquorState == GameManager.LiquorState.Void) {
 								Pers.SetActive (true);
@@ -64,7 +67,7 @@ public class InventoryManager : MonoBehaviour {
 						}
 						break;
 				case GameManager.GameLocationState.Prep:
-						print ("We are now in the prep chapter");
+						//print ("We are now in the prep chapter");
 
 						if (!gotFailure && GameManager.showedSATQ && GameManager.currentPrepState == GameManager.PrepState.Void) {
 								Failure.SetActive (true);
@@ -73,7 +76,7 @@ public class InventoryManager : MonoBehaviour {
 						}
 						break;
 				case GameManager.GameLocationState.Pond:
-						print ("We are now in the pond chapter");
+						//print ("We are now in the pond chapter");
 
 						if (!gotBoredom && GameManager.showedPondText && GameManager.currentPondState == GameManager.PondState.Void) {
 								Boredom.SetActive (true);
@@ -82,7 +85,7 @@ public class InventoryManager : MonoBehaviour {
 						}
 						break;
 				case GameManager.GameLocationState.Library:
-						print ("We are now in the library chapter");
+						//print ("We are now in the library chapter");
 
 						if (!gotWork && GameManager.showedStudyText && GameManager.currentStudyState == GameManager.StudyState.Void) {
 								work.SetActive (true);
@@ -91,7 +94,7 @@ public class InventoryManager : MonoBehaviour {
 						}
 						break;
 				case GameManager.GameLocationState.School:
-						print ("We are now in the school chapter");
+						//print ("We are now in the school chapter");
 						Frustration.SetActive (true);
 						if (!gotFrustration) {
 								InventoryOnKnight.inventoryInPossessionList.Add (Frustration);

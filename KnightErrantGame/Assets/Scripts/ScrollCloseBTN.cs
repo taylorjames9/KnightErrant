@@ -38,7 +38,8 @@ public class ScrollCloseBTN : MonoBehaviour {
 								GameManager.currentLiquorState = GameManager.LiquorState.GiveHimSomething;
 								LiquorScript.hitTheGuy = 0;
 
-						} else if (GameManager.showedLiquorText) {
+						} 
+						if (GameManager.showedLiquorText) {
 								scrollOBJ.SetActive (false);
 								Spot_ArriveScript.occupied = false;
 								GameManager.currentLiquorState = GameManager.LiquorState.Void;

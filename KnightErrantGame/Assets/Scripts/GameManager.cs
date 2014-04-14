@@ -111,11 +111,11 @@ public class GameManager : MonoBehaviour {
 										currentLiquorState = LiquorState.OpenScroll;
 
 								}
-
 								break;
 
 						case LiquorState.OpenScroll:
 								if (!showedLiquorText) {
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 										print ("WE ARE IN THE OPENSCROLL LIQUOR STATE");
 										LiquorScript.hitTheGuy = 0;
 										CameraCursorScript.currentlyHaveBusFinger = true;
