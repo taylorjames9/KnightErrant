@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour {
 								}
 								break;
 						case LiquorState.Void:
-
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								break;
 						default:
 						break;
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour {
 						//KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 						switch (currentPondState) {
 						case PondState.Arrived:
-								atPondText.text = "Lay Down \n by Pond?";
+								atPondText.text = "Lie Down \n by Pond?";
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								if (PondScript.hitThePond ==1) {
 										KnightController.currentAnimState = KnightController.CurrentAnimationState.LayingDown;
@@ -307,11 +307,12 @@ public class GameManager : MonoBehaviour {
 								break;
 						case SchoolState.OpenScroll:
 								if (!showedSchoolText) {
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 										Spot_ArriveScript.occupied = true;
 										scrollParchment.SetActive (true);
 										scrollTXT.text = "Sadly you did not defeat the dragon. \nBut you did earn this nifty pool noodle of \n epic frustration.";
 										iconOnScroll.renderer.material.mainTexture = textures [5];
-										showedPondText = true;
+										showedSchoolText = true;
 								}
 
 

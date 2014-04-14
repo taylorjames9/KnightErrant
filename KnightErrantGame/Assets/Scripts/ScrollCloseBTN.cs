@@ -57,17 +57,22 @@ public class ScrollCloseBTN : MonoBehaviour {
 		case GameManager.GameLocationState.Pond:
 			if (GameManager.showedPondText) {
 				print ("SHOULD BE CLOSING THE SCROLL");
-								//scrollOBJ.renderer.enabled = false;
 								scrollOBJ.SetActive (false);
 								GameManager.currentPondState = GameManager.PondState.Void;
 					}
 			break;
 		case GameManager.GameLocationState.Library:
-			//showedStudyText = true;
 			if (GameManager.showedStudyText) {
 					scrollOBJ.SetActive (false);
 								GameManager.currentStudyState = GameManager.StudyState.Void;
 			}
+			break;
+		case GameManager.GameLocationState.School:
+			if (GameManager.showedSchoolText) {
+					scrollOBJ.SetActive (false);
+					GameManager.currentSchoolState = GameManager.SchoolState.Void;
+					Spot_ArriveScript.occupied = false;
+				}
 			break;
 
 		default:

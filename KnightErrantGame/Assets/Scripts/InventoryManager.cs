@@ -94,9 +94,9 @@ public class InventoryManager : MonoBehaviour {
 						}
 						break;
 				case GameManager.GameLocationState.School:
-						//print ("We are now in the school chapter");
-						Frustration.SetActive (true);
-						if (!gotFrustration) {
+
+						if (!gotFrustration && GameManager.showedSchoolText && GameManager.currentSchoolState == GameManager.SchoolState.Void) {
+								Frustration.SetActive (true);
 								InventoryOnKnight.inventoryInPossessionList.Add (Frustration);
 								gotFrustration = true;
 						}
