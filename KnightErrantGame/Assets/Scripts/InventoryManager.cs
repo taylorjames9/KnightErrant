@@ -56,8 +56,9 @@ public class InventoryManager : MonoBehaviour {
 						break;
 				case GameManager.GameLocationState.Addict:
 						print ("We are now in the addict chapter");
-						Pers.SetActive (true);
-					if (!gotPerspective) {
+
+						if (!gotPerspective && GameManager.showedLiquorText && GameManager.currentLiquorState == GameManager.LiquorState.Void) {
+								Pers.SetActive (true);
 								InventoryOnKnight.inventoryInPossessionList.Add (Pers);
 								gotPerspective = true;
 						}
@@ -73,16 +74,18 @@ public class InventoryManager : MonoBehaviour {
 						break;
 				case GameManager.GameLocationState.Pond:
 						print ("We are now in the pond chapter");
-						Boredom.SetActive (true);
-						if (!gotBoredom) {
+
+						if (!gotBoredom && GameManager.showedPondText && GameManager.currentPondState == GameManager.PondState.Void) {
+								Boredom.SetActive (true);
 								InventoryOnKnight.inventoryInPossessionList.Add (Boredom);
 								gotBoredom = true;
 						}
 						break;
 				case GameManager.GameLocationState.Library:
 						print ("We are now in the library chapter");
-						work.SetActive (true);
-						if (!gotWork) {
+
+						if (!gotWork && GameManager.showedStudyText && GameManager.currentStudyState == GameManager.StudyState.Void) {
+								work.SetActive (true);
 								InventoryOnKnight.inventoryInPossessionList.Add (work);
 								gotWork = true;
 						}

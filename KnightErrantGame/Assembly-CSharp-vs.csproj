@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AudioPlay.cs" />
+     <Compile Include="Assets\Scripts\BusPassScript.cs" />
      <Compile Include="Assets\Scripts\CameraCursorScript.cs" />
      <Compile Include="Assets\Scripts\CursorScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -57,6 +58,7 @@
      <Compile Include="Assets\Scripts\InventorySpot.cs" />
      <Compile Include="Assets\Scripts\KnightController.cs" />
      <Compile Include="Assets\Scripts\LibraryScript.cs" />
+     <Compile Include="Assets\Scripts\LiquorScript.cs" />
      <Compile Include="Assets\Scripts\PlayPoofAudio.cs" />
      <Compile Include="Assets\Scripts\PondScript.cs" />
      <Compile Include="Assets\Scripts\PrepScript.cs" />

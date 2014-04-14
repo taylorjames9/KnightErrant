@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
 		public static  bool showedSchoolText;
 		public static  bool showedStudyText;
 		public static  bool showedSATQ;
+		public static bool showedGuyStory;
 
 
 		public static bool poofAudio;
@@ -39,18 +40,18 @@ public class GameManager : MonoBehaviour {
 		public enum PrepState {Arrived, PromptToTakeTest, Test, OpenScroll, Void};
 		public static PrepState currentPrepState;
 
+		public enum LiquorState {Arrived, MansStoryOpen, GiveHimSomething, OpenScroll, Void};
+		public static LiquorState currentLiquorState;
+
 		public TextMesh atTrashText;
 		public TextMesh atPondText;
 		public TextMesh atLibraryText;
 		public TextMesh atPrepText;
-		
 
 		public static bool lookInTrash; 
 		public static bool layInPond; 
 
 		public GameObject swirlObject;
-
-	
 
 	// Use this for initialization
 	void Start () {
@@ -61,7 +62,6 @@ public class GameManager : MonoBehaviour {
 				currentStudyState = StudyState.Void;
 				currentPondState = PondState.Void;
 				SATQ.SetActive (false);
-
 				showedBeginningText = false;
 				showedTrashText = false;
 				showedPrepText = false;
@@ -75,9 +75,12 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+				print ("GameManager.currentLiquorState = " + currentLiquorState);
+
 				switch (currentGameState) {
 				case GameLocationState.Beginning:
-						print ("In the beginning");
+						//print ("In the beginning");
 
 						StartCoroutine (StartBeginning ());
 
@@ -88,14 +91,55 @@ public class GameManager : MonoBehaviour {
 
 				case GameLocationState.Addict:
 						print ("We are now in the addict chapter");
-						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+						switch (currentLiquorState) {
+						case LiquorState.Arrived:
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								if (LiquorScript.hitTheGuy >=1) {
+										Spot_ArriveScript.occupied = true;
+										scrollParchment.SetActive (true);
+										scrollTXT.text = "I have searched far and wide and can\nnot find an honest day of work. Perhaps if I\nhad some means of transportation...";
+										iconOnScroll.renderer.material.mainTexture = textures [7];
+										showedGuyStory = true;
+
+								}
 						break;
+						case LiquorState.GiveHimSomething:
+								print ("We are in the give him something state!");
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								if (LiquorScript.gaveBusToGuy) {
+										CameraCursorScript.tappedBusPass = false; 
+										currentLiquorState = LiquorState.OpenScroll;
+
+								}
+
+								break;
+
+						case LiquorState.OpenScroll:
+								if (!showedLiquorText) {
+										print ("WE ARE IN THE OPENSCROLL LIQUOR STATE");
+										LiquorScript.hitTheGuy = 0;
+										CameraCursorScript.currentlyHaveBusFinger = true;
+										Spot_ArriveScript.occupied = true;
+										scrollParchment.SetActive (true);
+										scrollTXT.text = "You have helped a person. For this you \n have earned the Helmet of Hard Earned\nPerspective";
+										iconOnScroll.renderer.material.mainTexture = textures [1];
+										showedLiquorText = true;
+								}
+								break;
+						case LiquorState.Void:
+
+								break;
+						default:
+						break;
+						}
+
+				break;
 
 
 				case GameLocationState.Prep:
 						switch (currentPrepState) {
 						case PrepState.Arrived:
-								atPrepText.text = "Try thy hand at the\nformiddable test?";
+								atPrepText.text = "Try thy hand at yon\nformiddable test?";
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 								print ("hitThePrepBuildingCount = " + PrepScript.hitThePrep);
 								if (PrepScript.hitThePrep%2 ==1) {
@@ -110,7 +154,7 @@ public class GameManager : MonoBehaviour {
 								break;
 						case PrepState.OpenScroll:
 								StartCoroutine (OpenPrepScroll ());
-								Spot_ArriveScript.occupied = true;
+
 
 								break;
 						case PrepState.Void:
@@ -274,11 +318,6 @@ public class GameManager : MonoBehaviour {
 				default:
 					break;
 						}
-
-				/*if (!KnightController.isMoving) {
-					audio.Play ();
-						}*/
-						
 		}
 
 		IEnumerator PlayBadEnding(string endingType){
@@ -317,7 +356,7 @@ public class GameManager : MonoBehaviour {
 						//swirlObject.audio.Play ();
 						poofAudio = true;
 						scrollParchment.SetActive (true);
-						scrollTXT.text = "My lad, see if thou can not find some\nexperience in this modern era to make \nthee stand from thy peers in my court...";
+						scrollTXT.text = "My lad, see if thou can not find some\nexperience in this modern era to make \nthee stand apart from thy peers in \nmy court...";
 						iconOnScroll.renderer.material.mainTexture = textures [6];
 						StartCoroutine(EndSound ());
 						showedBeginningText = true;
@@ -337,6 +376,7 @@ public class GameManager : MonoBehaviour {
 						scrollParchment.SetActive (true);
 						scrollTXT.text = "You received the shin guards \nof unbelievable failure.";
 						iconOnScroll.renderer.material.mainTexture = textures [2];
+						Spot_ArriveScript.occupied = true;
 						showedPrepText = true;
 				}
 				yield return new WaitForSeconds (0);

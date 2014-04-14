@@ -10,6 +10,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 		public static bool justArrivedAtLib;
 		public static bool justArrivedAtPond;
 		public static bool justArrivedAtPrep;
+		public static bool justArrivedAtLiquor;
 
 		public static bool occupied;
 
@@ -31,12 +32,14 @@ public class Spot_ArriveScript : MonoBehaviour {
 						justArrivedAtPond = false;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;
+						justArrivedAtLiquor = false;
 
 				}
-				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot1") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot1" && justArrivedAtLiquor == false) {
 						print ("I have arrived at addict");
 						GameManager.currentGameState  = GameManager.GameLocationState.Addict; 
-						//KnightController.isMoving = false;
+						GameManager.currentLiquorState = GameManager.LiquorState.Arrived;
+						justArrivedAtLiquor = true;
 						justArrivedAtPond = false;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;
@@ -50,7 +53,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						justArrivedAtPrep = true;
 						justArrivedAtLib = false;
 						justArrivedAtPond = false;
-						//KnightController.isMoving = false;
+						justArrivedAtLiquor = false;
 
 				}
 				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot3" && justArrivedAtPond == false && PondScript.hitThePond == 0) {
@@ -60,6 +63,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						justArrivedAtPond = true;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;
+						justArrivedAtLiquor = false;
 				} else {
 						//justArrivedAtPond = false;
 				}
@@ -69,7 +73,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						justArrivedAtPond = false;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;
-						//KnightController.isMoving = false;
+						justArrivedAtLiquor = false;
 
 				}
 				if (myLandingSpot.gameObject.name == "LandingSpot5" && dist < 0.1 && justArrivedAtLib == false && LibraryScript.hitTheLibrary == 0) {
@@ -79,6 +83,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 						justArrivedAtLib = true;
 						justArrivedAtPond = false;
 						justArrivedAtPrep = false;
+						justArrivedAtLiquor = false;
 				} else {
 						//justArrivedAtLib = false;
 				}

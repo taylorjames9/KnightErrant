@@ -31,9 +31,20 @@ public class ScrollCloseBTN : MonoBehaviour {
 				scrollOBJ.SetActive (false);
 			}
 			break;
-		case GameManager.GameLocationState.Addict:
-			//showedLiquorText = true;
-			scrollOBJ.SetActive (false);
+				case GameManager.GameLocationState.Addict:
+						if (GameManager.showedGuyStory) {
+								scrollOBJ.SetActive (false);
+								Spot_ArriveScript.occupied = false;
+								GameManager.currentLiquorState = GameManager.LiquorState.GiveHimSomething;
+								LiquorScript.hitTheGuy = 0;
+
+						} else if (GameManager.showedLiquorText) {
+								scrollOBJ.SetActive (false);
+								Spot_ArriveScript.occupied = false;
+								GameManager.currentLiquorState = GameManager.LiquorState.Void;
+
+						}
+
 			break;
 				case GameManager.GameLocationState.Prep:
 						if (GameManager.showedPrepText) {			
@@ -47,12 +58,14 @@ public class ScrollCloseBTN : MonoBehaviour {
 				print ("SHOULD BE CLOSING THE SCROLL");
 								//scrollOBJ.renderer.enabled = false;
 								scrollOBJ.SetActive (false);
+								GameManager.currentPondState = GameManager.PondState.Void;
 					}
 			break;
 		case GameManager.GameLocationState.Library:
 			//showedStudyText = true;
 			if (GameManager.showedStudyText) {
 					scrollOBJ.SetActive (false);
+								GameManager.currentStudyState = GameManager.StudyState.Void;
 			}
 			break;
 
