@@ -59,7 +59,9 @@
      <Compile Include="Assets\Scripts\LibraryScript.cs" />
      <Compile Include="Assets\Scripts\PlayPoofAudio.cs" />
      <Compile Include="Assets\Scripts\PondScript.cs" />
+     <Compile Include="Assets\Scripts\PrepScript.cs" />
      <Compile Include="Assets\Scripts\Reset.cs" />
+     <Compile Include="Assets\Scripts\SatQCloseBtn.cs" />
      <Compile Include="Assets\Scripts\ScrollCloseBTN.cs" />
      <Compile Include="Assets\Scripts\SpotArriveCollide.cs" />
      <Compile Include="Assets\Scripts\Spot_ArriveScript.cs" />

@@ -38,6 +38,8 @@ public class Spot_ArriveScript : MonoBehaviour {
 				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot2") {
 						print ("I have arrived at: Prep");
 						GameManager.currentGameState  = GameManager.GameLocationState.Prep; 
+						GameManager.currentPrepState = GameManager.PrepState.Arrived;
+
 						//KnightController.isMoving = false;
 
 				}

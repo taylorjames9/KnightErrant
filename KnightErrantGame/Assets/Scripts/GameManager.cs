@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 		public GameObject iconOnScroll;
 		public  Texture[] textures;
 		public AnimationClip PoofAnim;
+		public GameObject SATQ;
 
 		public static bool showedBeginningText;
 		public static  bool showedTrashText;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
 		public static  bool showedPondText;
 		public static  bool showedSchoolText;
 		public static  bool showedStudyText;
+		public static  bool showedSATQ;
+
 
 		public static bool poofAudio;
 		public AudioClip poofAudioClip;
@@ -33,9 +36,13 @@ public class GameManager : MonoBehaviour {
 		public enum StudyState {WalkingThereToLib, Arrived, SittingAction, StaySeated, Stand, OpenScroll, Void};
 		public static StudyState currentStudyState;
 
+		public enum PrepState {Arrived, PromptToTakeTest, Test, OpenScroll, Void};
+		public static PrepState currentPrepState;
+
 		public TextMesh atTrashText;
 		public TextMesh atPondText;
 		public TextMesh atLibraryText;
+		public TextMesh atPrepText;
 		
 
 		public static bool lookInTrash; 
@@ -53,6 +60,7 @@ public class GameManager : MonoBehaviour {
 
 				currentStudyState = StudyState.Void;
 				currentPondState = PondState.Void;
+				SATQ.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -75,8 +83,30 @@ public class GameManager : MonoBehaviour {
 						break;
 				case GameLocationState.Prep:
 						print ("We are now in the prep chapter");
-						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 
+						switch (currentPrepState) {
+						case PrepState.Arrived:
+								atPrepText.text = "Try thy hand at the\nformiddable test?";
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								print ("hitThePrepBuildingCount = " + PrepScript.hitThePrep);
+								if (PrepScript.hitThePrep  == 2) {
+
+										SATQ.SetActive (true);
+										showedSATQ = true;
+										currentPrepState = PrepState.Test;
+										Spot_ArriveScript.occupied = true;
+										PrepScript.hitThePrep++;
+
+								}
+								break;
+						case PrepState.Test:
+
+
+								break;
+						default:
+								break;
+
+						}
 						break;
 				
 				case GameLocationState.Pond:
@@ -235,6 +265,7 @@ public class GameManager : MonoBehaviour {
 						}*/
 						
 		}
+
 		IEnumerator PlayBadEnding(string endingType){
 				yield return new WaitForSeconds (1.0f);
 				Application.LoadLevel (endingType);
