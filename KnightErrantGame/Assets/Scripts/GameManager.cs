@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 		public TextMesh scrollTXT;
 		public GameObject iconOnScroll;
 		public  Texture[] textures;
+		public AnimationClip PoofAnim;
 
 		public static bool showedBeginningText;
 		public static  bool showedTrashText;
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
 		public static  bool showedSchoolText;
 		public static  bool showedStudyText;
 
+		public static bool poofAudio;
+		public AudioClip poofAudioClip;
 
 		public enum GameLocationState{Addict, Prep, Pond, Library, School, Trash, Swirl, Beginning, Between};
 		public static GameLocationState currentGameState;
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour {
 		public static bool lookInTrash; 
 		public static bool layInPond; 
 
+		public GameObject swirlObject;
+
 	
 
 	// Use this for initialization
@@ -53,13 +58,14 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-				//print ("Spot_ArriveScript.justArrived "+Spot_ArriveScript.justArrived);
-
 				switch (currentGameState) {
 				case GameLocationState.Beginning:
 						print ("In the beginning");
-						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+
+						StartCoroutine (StartBeginning ());
+
+						StartCoroutine (ShowBegParchment ());
+						showedBeginningText = true; 
 					
 						break;
 
@@ -242,6 +248,40 @@ public class GameManager : MonoBehaviour {
 				if (PondScript.hitThePond ==2) {
 						currentPondState = PondState.StandAfterLaying;
 				}
+				yield return new WaitForSeconds (0);
+		}
+		IEnumerator StartBeginning(){
+
+				if (!showedBeginningText) {
+						knight.renderer.enabled = false;
+						yield return new WaitForSeconds (2.0f);
+						KnightController.currentAnimState = KnightController.CurrentAnimationState.Poof;
+						poofAudio = true;
+						yield return new WaitForSeconds (0.1f);
+						knight.renderer.enabled = true;
+						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+						Spot_ArriveScript.occupied = true;
+						yield return new WaitForSeconds (0.0f);
+				}
+		}
+		IEnumerator ShowBegParchment(){
+				if (!showedBeginningText) {
+						yield return new WaitForSeconds (4.0f);
+						//audio.PlayOneShot (poofAudioClip, 0.9f);
+						//swirlObject.audio.Play ();
+						poofAudio = true;
+						scrollParchment.SetActive (true);
+						scrollTXT.text = "My lad, see if thou can not find some\nexperience in this modern era to make \nthee stand from thy peers in my court...";
+						iconOnScroll.renderer.material.mainTexture = textures [6];
+						StartCoroutine(EndSound ());
+						showedBeginningText = true;
+				}
+				yield return new WaitForSeconds (0);
+		}
+		IEnumerator EndSound(){
+
+				yield return new WaitForSeconds (1.0f);
+				poofAudio = false;
 				yield return new WaitForSeconds (0);
 		}
 }

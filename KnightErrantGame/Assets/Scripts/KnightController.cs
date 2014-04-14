@@ -18,14 +18,15 @@ public class KnightController : MonoBehaviour {
 	private Animator animator;
 	public static bool isMoving;
 
-		public enum CurrentAnimationState {IdleWait, WalkingRight, WalkingLeft, LayingDown, LayingThere, StandingUp, SittingToRead, StaySeated, StandFromReading, PokeDragon};
+		public enum CurrentAnimationState {Poof, IdleWait, WalkingRight, WalkingLeft, LayingDown, LayingThere, StandingUp, SittingToRead, StaySeated, StandFromReading, PokeDragon};
 		public static CurrentAnimationState currentAnimState;
 
 	//float speed = 5.0f; 
 
 	// Use this for initialization
 	void Start () {
-				currentAnimState = CurrentAnimationState.LayingDown;
+		
+				currentAnimState = CurrentAnimationState.Poof;
 		animator = this.GetComponent<Animator>();
 		target = transform;
 
@@ -50,6 +51,10 @@ public class KnightController : MonoBehaviour {
 				}
 
 				switch (currentAnimState) {
+				case CurrentAnimationState.Poof:
+						animator.SetInteger ("Direction", 9);
+						isMoving = false;
+						break;
 				case CurrentAnimationState.IdleWait:
 						animator.SetInteger ("Direction", 0);
 						isMoving = false;

@@ -19,9 +19,12 @@ public class ScrollCloseBTN : MonoBehaviour {
 	public void OnMouseDown(){
 		print ("MOUSE CLICK ON CLOSE BTN");
 		switch (GameManager.currentGameState) {
-		case GameManager.GameLocationState.Beginning:
-			//showedBeginningText = true;
-			scrollOBJ.SetActive (false);
+				case GameManager.GameLocationState.Beginning:
+						if (GameManager.showedBeginningText) {
+								scrollOBJ.SetActive (false);
+								Spot_ArriveScript.occupied = false;
+
+						}
 			break;
 		case GameManager.GameLocationState.Trash:
 			if (GameManager.showedTrashText) {

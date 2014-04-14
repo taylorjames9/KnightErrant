@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\InventorySpot.cs" />
      <Compile Include="Assets\Scripts\KnightController.cs" />
      <Compile Include="Assets\Scripts\LibraryScript.cs" />
+     <Compile Include="Assets\Scripts\PlayPoofAudio.cs" />
      <Compile Include="Assets\Scripts\PondScript.cs" />
      <Compile Include="Assets\Scripts\Reset.cs" />
      <Compile Include="Assets\Scripts\ScrollCloseBTN.cs" />
