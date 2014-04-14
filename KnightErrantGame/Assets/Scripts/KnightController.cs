@@ -91,6 +91,10 @@ public class KnightController : MonoBehaviour {
 						animator.SetInteger ("Direction", 8);
 						isMoving = true;
 						break;
+				case CurrentAnimationState.PokeDragon:
+						animator.SetInteger ("Direction", 10);
+						//isMoving = true;
+						break;
 				default:
 						break;
 				}

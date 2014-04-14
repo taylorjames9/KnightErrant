@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\BusPassScript.cs" />
      <Compile Include="Assets\Scripts\CameraCursorScript.cs" />
      <Compile Include="Assets\Scripts\CursorScript.cs" />
+     <Compile Include="Assets\Scripts\DragonScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HoverOverMe.cs" />
      <Compile Include="Assets\Scripts\InventorItemScript.cs" />

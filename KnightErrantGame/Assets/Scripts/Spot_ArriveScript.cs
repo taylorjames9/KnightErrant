@@ -11,6 +11,7 @@ public class Spot_ArriveScript : MonoBehaviour {
 		public static bool justArrivedAtPond;
 		public static bool justArrivedAtPrep;
 		public static bool justArrivedAtLiquor;
+		public static bool justArrivedSchool;
 
 		public static bool occupied;
 
@@ -67,9 +68,11 @@ public class Spot_ArriveScript : MonoBehaviour {
 				} else {
 						//justArrivedAtPond = false;
 				}
-				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot4") {
+				if (dist < 0.1 && myLandingSpot.gameObject.name == "LandingSpot4" && justArrivedSchool == false) {
 						print ("I have arrived at: school");
 						GameManager.currentGameState  = GameManager.GameLocationState.School; 
+						GameManager.currentSchoolState = GameManager.SchoolState.Arrived;
+						justArrivedSchool = true;
 						justArrivedAtPond = false;
 						justArrivedAtLib = false;
 						justArrivedAtPrep = false;

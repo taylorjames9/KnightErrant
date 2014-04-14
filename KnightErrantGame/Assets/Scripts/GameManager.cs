@@ -43,10 +43,16 @@ public class GameManager : MonoBehaviour {
 		public enum LiquorState {Arrived, MansStoryOpen, GiveHimSomething, OpenScroll, Void};
 		public static LiquorState currentLiquorState;
 
+		public enum SchoolState {Arrived, Battle, OpenScroll, Void};
+		public static SchoolState currentSchoolState;
+
 		public TextMesh atTrashText;
 		public TextMesh atPondText;
 		public TextMesh atLibraryText;
 		public TextMesh atPrepText;
+		public TextMesh atSchoolText;
+
+		public static bool poking;
 
 		public static bool lookInTrash; 
 		public static bool layInPond; 
@@ -233,7 +239,7 @@ public class GameManager : MonoBehaviour {
 										currentStudyState = StudyState.StaySeated;
 								} else {
 										KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
-
+										LibraryScript.hitTheLibrary = 0;
 								}
 								break;
 						case StudyState.StaySeated:
@@ -278,8 +284,43 @@ public class GameManager : MonoBehaviour {
 
 					break;
 				case GameLocationState.School:
-								print ("We are now in the school chapter");
-						KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+						print ("We are now in the school chapter");
+						switch (currentSchoolState) {
+						case SchoolState.Arrived:
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								atSchoolText.text = "Fight the Dragon?";
+
+								break;
+						case SchoolState.Battle:
+								print ("SchoolState = Battle");
+								if (!poking) {
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.PokeDragon;
+										atSchoolText.text = "Poke";
+										poking = true;
+								} else {
+										KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								}
+								if (DragonScript.dragonBlows > 5) {
+										currentSchoolState = SchoolState.OpenScroll;
+
+								}
+								break;
+						case SchoolState.OpenScroll:
+								if (!showedSchoolText) {
+										Spot_ArriveScript.occupied = true;
+										scrollParchment.SetActive (true);
+										scrollTXT.text = "Sadly you did not defeat the dragon. \nBut you did earn this nifty pool noodle of \n epic frustration.";
+										iconOnScroll.renderer.material.mainTexture = textures [5];
+										showedPondText = true;
+								}
+
+
+								break;
+
+						default:
+								break;
+
+						}
 
 
 					break;
