@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour {
 								break;
 						case LiquorState.Void:
 								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
+								Spot_ArriveScript.occupied = false;
 								break;
 						default:
 						break;
@@ -322,7 +323,10 @@ public class GameManager : MonoBehaviour {
 										iconOnScroll.renderer.material.mainTexture = textures [5];
 										showedSchoolText = true;
 								}
-
+								break;
+						case SchoolState.Void:
+								Spot_ArriveScript.occupied = false;
+								KnightController.currentAnimState = KnightController.CurrentAnimationState.IdleWait;
 
 								break;
 
